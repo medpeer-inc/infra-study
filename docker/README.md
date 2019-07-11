@@ -1,5 +1,7 @@
 # Docker
 
+Docker、Dockerfile、docker-composeに関する回です。
+
 ## ゴール：Dockerを使いこなせるようになる
 
 - OSS等を試すときにサクッとdockerで試せる

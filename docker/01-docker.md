@@ -13,7 +13,7 @@
 ---
 
 ### カーネル空間/ユーザー空間/プロセス
-<img src="1_kernel.png" width="500px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![1_kernel](https://user-images.githubusercontent.com/24800246/61018128-b2cfd200-a3d0-11e9-8414-1e8dac0579b8.png)
 
 ---
 
@@ -34,7 +34,7 @@
 
 - 隔離されたユーザー空間をコンテナと呼んで、あたかも一個の仮想マシンとしてみている
 
-<img src="2_container.png" width="500px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![2_container](https://user-images.githubusercontent.com/24800246/61018148-c3804800-a3d0-11e9-89e8-2e3f056e9684.png)
 
 ---
 
@@ -42,7 +42,7 @@
 - ゲストOSが無い分軽量
 - ただし、Linuxカーネルが必要
 
-<img src="3_docker_vs_vm.png" width="800px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+<img width="431" alt="3_docker_vs_vm" src="https://user-images.githubusercontent.com/24800246/61018487-01ca3700-a3d2-11e9-88b6-a9bcb05f05de.png">
 
 ---
 
@@ -61,7 +61,7 @@
 ## 実は、MacとWindowsではそんなに軽量ではない！
 - **なぜならLinuxカーネルを搭載していないので**
 
-<img src="4_mac_win_docker.png" width="800px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![4](https://user-images.githubusercontent.com/24800246/61018500-0bec3580-a3d2-11e9-9fd8-22a7139cd17f.png)
 
 ---
 
@@ -85,7 +85,7 @@ Linuxで開発したいなぁ...
 
 レジストリとイメージとコンテナ
 
-<img src="5_docker_image.png" width="800px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![5](https://user-images.githubusercontent.com/24800246/61018514-11498000-a3d2-11e9-8dae-aa104de83385.png)
 
 ---
 
@@ -93,7 +93,7 @@ Linuxで開発したいなぁ...
 
 コンテナの状態
 
-<img src="6_state.png" width="800px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![6](https://user-images.githubusercontent.com/24800246/61018517-14447080-a3d2-11e9-90a6-b6ba681b4192.png)
 
 ---
 
@@ -101,7 +101,7 @@ Linuxで開発したいなぁ...
 
 ネットワークの分離
 
-<img src="7_network.png" width="700px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![7_network](https://user-images.githubusercontent.com/24800246/61018525-17d7f780-a3d2-11e9-82bf-a68c1c57f9ce.png)
 
 詳しくは[Docker Reference Architecture](https://success.docker.com/article/networking)参照
 
@@ -111,7 +111,7 @@ Linuxで開発したいなぁ...
 
 ポートバインディング
 
-<img src="8_port.png" width="700px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![8](https://user-images.githubusercontent.com/24800246/61018532-1c041500-a3d2-11e9-9cdb-278267748fd3.png)
 
 ---
 
@@ -119,7 +119,7 @@ Linuxで開発したいなぁ...
 
 2パターンのvolumeの利用方法
 
-<img src="9_volume.png" width="700px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![9](https://user-images.githubusercontent.com/24800246/61018534-21615f80-a3d2-11e9-8574-ec8aa80a3f64.png)
 
 ---
 
@@ -360,5 +360,3 @@ Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
   - 理由は同上
 - mysql等のDB
   - 同じDBを複数バージョンローカルに用意するのは面倒なので
-
----

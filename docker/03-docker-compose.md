@@ -24,7 +24,7 @@
 
 ### [ハンズオン] Web + DB
 
-<img src="10_compose.png" width="800px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![10](https://user-images.githubusercontent.com/24800246/61018538-23c3b980-a3d2-11e9-868f-0591d91fead3.png)
 
 ---
 
@@ -174,7 +174,7 @@ curl http://localhost:8888/tasks
 
 ### [追加課題] さらにNginxも追加する
 
-<img src="11_nginx.png" width="800px" style="background-color: rgba(255, 255, 255, 0); border: none; box-shadow: none; margin: 20px;" />
+![11](https://user-images.githubusercontent.com/24800246/61018542-26261380-a3d2-11e9-8141-f8e1ccf14e5a.png)
 
 ---
 
