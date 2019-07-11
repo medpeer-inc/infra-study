@@ -10,7 +10,7 @@ dockerを学ぶ上で知っておくべき知識
 
 - プロセス
 
-### カーネル空間/ユーザー空間/プロセス
+## カーネル空間/ユーザー空間/プロセス
 図で表すと下記のようになる
 
 ![1_kernel](https://user-images.githubusercontent.com/24800246/61018128-b2cfd200-a3d0-11e9-8414-1e8dac0579b8.png)
@@ -237,7 +237,7 @@ Usage:	docker rmi [OPTIONS] IMAGE [IMAGE...]
 - `docker stats`
   - 各コンテナのCPU/メモリ/IOを表示
 
-### [ハンズオン] 一通りのコマンド
+## [ハンズオン] 一通りのコマンド
 
 ```bash
 # イメージの取得
@@ -287,7 +287,7 @@ docker rm nginx-alpine
 docker rmi nginx:alpine
 ```
 
-### [ハンズオン] runして対話型で利用
+## [ハンズオン] runして対話型で利用
 
 ```bash
 # ruby 2.6のirbを実行
@@ -304,7 +304,7 @@ irb> 1.:to_s
 
 ローカルを汚さずに何かを確認したいときなどに便利
 
-### [追加課題] run時のコマンド指定
+## [追加課題] run時のコマンド指定
 **問題：`alpine` の `/etc/os-release` を表示させてみる**
 
 - alpineは軽量Linuxディストリビューション
@@ -314,7 +314,7 @@ irb> 1.:to_s
 Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 ```
 
-### [追加課題] volume
+## [追加課題] volume
 **問題：`-v`オプションを利用し、下記htmlファイルをコンテナ内にマウントし、curlでアクセスせよ**
 
 - `hoge.html`の内容
@@ -325,7 +325,7 @@ Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 - コンテナ内のパスは`/usr/share/nginx/html/hoge.html`
 - マウント時のホスト側は絶対パスで指定
 
-### Tips: よくコンテナで実行するサービス
+## Tips: よくコンテナで実行するサービス
 
 - Swagger
   - APIスキーマ定義/表示/Mock生成ツール
