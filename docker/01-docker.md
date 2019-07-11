@@ -1,8 +1,8 @@
 # 第一章 Docker
 
----
-
 ## 基礎知識
+
+dockerを学ぶ上で知っておくべき知識
 
 - カーネル
 
@@ -10,14 +10,17 @@
 
 - プロセス
 
----
-
 ### カーネル空間/ユーザー空間/プロセス
+図で表すと下記のようになる
+
 ![1_kernel](https://user-images.githubusercontent.com/24800246/61018128-b2cfd200-a3d0-11e9-8414-1e8dac0579b8.png)
 
----
+- OSが提供するカーネル空間とは別にユーザー空間が存在する
+- 我々が実行する各プロセスはユーザー空間で動作する
 
-## Dockerとは隔離の技術
+## Dockerとは隔離の技術である
+
+特徴
 
 - 仮想化技術の一つ
   - 他にはハイパーバイザ型VMなど
@@ -30,21 +33,9 @@
 
 - Linuxカーネルが必要
 
----
-
 - 隔離されたユーザー空間をコンテナと呼んで、あたかも一個の仮想マシンとしてみている
 
 ![2_container](https://user-images.githubusercontent.com/24800246/61018148-c3804800-a3d0-11e9-89e8-2e3f056e9684.png)
-
----
-
-## ハイパーバイザ型との比較
-- ゲストOSが無い分軽量
-- ただし、Linuxカーネルが必要
-
-<img width="431" alt="3_docker_vs_vm" src="https://user-images.githubusercontent.com/24800246/61018487-01ca3700-a3d2-11e9-88b6-a9bcb05f05de.png">
-
----
 
 ## ハイパーバイザ型との比較
 
@@ -56,18 +47,18 @@
   - Linuxカーネルが必要
   - WindowsやMacの環境は用意できない
 
----
+下の図は高さがリソース消費を表している
+
+<img width="431" alt="3_docker_vs_vm" src="https://user-images.githubusercontent.com/24800246/61018487-01ca3700-a3d2-11e9-88b6-a9bcb05f05de.png">
+
+参考: https://thinkit.co.jp/story/2015/10/27/6551
 
 ## 実は、MacとWindowsではそんなに軽量ではない！
-- **なぜならLinuxカーネルを搭載していないので**
+**なぜならMacやWIndowsはLinuxカーネルを搭載していないので**
+
+MacもWindowsもハイパーバイザ上でLinuxを動かし、その上でDocker Engineを動かしている
 
 ![4](https://user-images.githubusercontent.com/24800246/61018500-0bec3580-a3d2-11e9-9fd8-22a7139cd17f.png)
-
----
-
-Linuxで開発したいなぁ...
-
----
 
 ## Dockerの基本
 
@@ -79,51 +70,57 @@ Linuxで開発したいなぁ...
 
 - volume
 
----
-
 ## docker image
 
 レジストリとイメージとコンテナ
 
-![5](https://user-images.githubusercontent.com/24800246/61018514-11498000-a3d2-11e9-8dae-aa104de83385.png)
+- `docker pull`でイメージをレジストリからローカルに取得
+- `docker run`でイメージからコンテナを起動
 
----
+![5](https://user-images.githubusercontent.com/24800246/61018514-11498000-a3d2-11e9-8dae-aa104de83385.png)
 
 ## docker image
 
 コンテナの状態
 
-![6](https://user-images.githubusercontent.com/24800246/61018517-14447080-a3d2-11e9-90a6-b6ba681b4192.png)
+- コンテナには起動と停止の状態がある(厳密には再起動中などもっとある)
+- 各コマンドで下記の図のように状態が遷移する
 
----
+![6](https://user-images.githubusercontent.com/24800246/61018517-14447080-a3d2-11e9-90a6-b6ba681b4192.png)
 
 ## docker network
 
 ネットワークの分離
 
+- dockerでは仮想的なネットワークを構築し、分離することが可能である
+- 下記の図では緑のネットワークと青のネットワークに分離している
+- 真ん中のコンテナは左右のコンテナと通信できるが、左右のコンテナ同士では通信できない
+
 ![7_network](https://user-images.githubusercontent.com/24800246/61018525-17d7f780-a3d2-11e9-82bf-a68c1c57f9ce.png)
 
 詳しくは[Docker Reference Architecture](https://success.docker.com/article/networking)参照
-
----
 
 ## docker network
 
 ポートバインディング
 
-![8](https://user-images.githubusercontent.com/24800246/61018532-1c041500-a3d2-11e9-9cdb-278267748fd3.png)
+- ホスト側に公開するポートを指定してマッピングが可能である
+- ポートをマッピングしていない場合は、ホストからコンテナに通信はできない
 
----
+![8](https://user-images.githubusercontent.com/24800246/61018532-1c041500-a3d2-11e9-9cdb-278267748fd3.png)
 
 ## docker volume
 
-2パターンのvolumeの利用方法
+2パターンのvolumeの利用方法がある
+- ホストのディレクトリ/ファイルをマウントする方法
+- Docker内に永続化ボリュームを作成する方法
+- コンテナ内のファイルはコンテナ削除時に消えるが、永続化ボリュームやホスト側のファイルは残る
 
 ![9](https://user-images.githubusercontent.com/24800246/61018534-21615f80-a3d2-11e9-8574-ec8aa80a3f64.png)
 
----
-
 ## Dockerコマンド
+
+よく利用するコマンド一覧
 
 - `docker pull`
 - `docker run`
@@ -134,13 +131,9 @@ Linuxで開発したいなぁ...
 - `docker logs`
 - `docker images`
 
----
-
-ちなみに、補完をbashやzshに設定しとくと便利
+ちなみに、補完をbashやzshに設定しとくと便利である
 
 [設定方法](https://docs.docker.com/compose/completion/)
-
----
 
 ## docker pull
 
@@ -162,8 +155,6 @@ Usage:	docker pull [OPTIONS] NAME[:TAG|@DIGEST]
   ruby:latest
 ```
 
----
-
 ## docker run
 
 イメージからコンテナを起動する
@@ -181,8 +172,6 @@ Options:
   -t, --tty          Allocate a pseudo-TTY
   -v, --volume list  Bind mount a volume
 ```
-
----
 
 ## docker stop
 
@@ -202,8 +191,6 @@ Options:
   -f, --force     Force the removal of a running container (uses SIGKILL)
 ```
 
----
-
 ## docker ps
 コンテナ一覧を表示
 
@@ -222,8 +209,6 @@ Options:
 Usage:	docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
 ```
 
----
-
 ## docker logs
 コンテナのログを表示
 
@@ -235,8 +220,6 @@ Options:
   -f, --follow         Follow log output
 ```
 
----
-
 ## docker images
 ローカルのイメージの一覧
 
@@ -247,8 +230,6 @@ Options:
 Usage:	docker rmi [OPTIONS] IMAGE [IMAGE...]
 ```
 
----
-
 ## その他便利コマンド
 - `docker image prune`
   - 未使用のイメージの全削除
@@ -256,52 +237,55 @@ Usage:	docker rmi [OPTIONS] IMAGE [IMAGE...]
 - `docker stats`
   - 各コンテナのCPU/メモリ/IOを表示
 
----
-
 ### [ハンズオン] 一通りのコマンド
 
 ```bash
 # イメージの取得
 docker pull nginx:alpine
+
 # イメージ一覧に存在することの確認
 docker images | grep nginx
+
 # 現在のコンテナ一覧の確認(多すぎる場合は -f name=apline を指定)
 docker ps
+
 # イメージからコンテナを起動
 docker run -d --name nginx-alpine -p 8888:80 nginx:alpine
+
 # 現在のコンテナ一覧の確認(多すぎる場合は -f name=apline を指定)
 docker ps
+
 # curlでアクセスする(Welcome to nginx!が表示されればOK)
 curl http://localhost:8888
+
 # logsでアクセスログを確認する
 docker logs nginx-alpine
-```
 
----
-
-### [ハンズオン] 一通りのコマンド 続き
-
-```bash
 # execでshを実行
 docker exec -it nginx-alpine sh
+
 # html書き換え(titleを適当に書き換える)
 vi /usr/share/nginx/html/index.html
+
 # Ctrl + D or exitでshを終了
 # curlでアクセスする(書き換えたtitleが表示されればOK)
 curl http://localhost:8888
+
 # コンテナを停止する
 docker stop nginx-alpine
+
 # 一覧に表示されないことを確認
 docker ps
+
 # -aオプションをつけて停止中のコンテナも含めると表示されることを確認
 docker ps -a
+
 # 停止したコンテナを削除する
 docker rm nginx-alpine
+
 # イメージを削除する
 docker rmi nginx:alpine
 ```
-
----
 
 ### [ハンズオン] runして対話型で利用
 
@@ -320,8 +304,6 @@ irb> 1.:to_s
 
 ローカルを汚さずに何かを確認したいときなどに便利
 
----
-
 ### [追加課題] run時のコマンド指定
 **問題：`alpine` の `/etc/os-release` を表示させてみる**
 
@@ -331,8 +313,6 @@ irb> 1.:to_s
 ```none
 Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 ```
-
----
 
 ### [追加課題] volume
 **問題：`-v`オプションを利用し、下記htmlファイルをコンテナ内にマウントし、curlでアクセスせよ**
@@ -344,8 +324,6 @@ Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 ```
 - コンテナ内のパスは`/usr/share/nginx/html/hoge.html`
 - マウント時のホスト側は絶対パスで指定
-
----
 
 ### Tips: よくコンテナで実行するサービス
 
